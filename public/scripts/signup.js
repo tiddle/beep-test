@@ -38,9 +38,9 @@ var RegisteredUsers = React.createClass({
             )
         })
         return (
-            <div id="registered-users">
+            <ul id="registered-users">
                 {registeredUsers}
-            </div>
+            </ul>
         )
     }
 });
@@ -69,25 +69,31 @@ var RegisterForm = React.createClass({
     render: function () {
         return (
             <form className="registration-form" onSubmit={this.handleSubmit}>
-                <input
+            <ul>
+                <li><input
                     type="text"
                     placeholder="Your name"
                     value={this.state.name}
                     onChange={this.handleNameChange}
-                />
+                /></li>
+           <li>
                 <input
                     type="text"
                     placeholder="Your email"
                     value={this.state.name}
                     onChange={this.handleEmailChange}
-                />
+                /></li>
+            <li>
                 <input
                     type="text"
                     placeholder="Your goal, eg 6.3"
                     value={this.state.goal}
                     onChange={this.handleGoalChange}
-                />
+                /></li>
+            <li>
                 <input type="submit" value="Register"/>
+                </li>
+                </ul>
             </form>
         ) ;
     }

@@ -47,7 +47,7 @@ app.get('/api/comments', function(req, res) {
 });
 
 app.get('/api/signup', function(req, res) {
-  fs.readFile(COMMENTS_FILE, function(err, data) {
+  fs.readFile(SIGNUP_FILE, function(err, data) {
     if (err) {
       console.error(err);
       process.exit(1);
