@@ -6,7 +6,6 @@ var Register = React.createClass({
     getRegisteredUsers: function() {
         this.firebaseRef = new Firebase('https://boiling-fire-6401.firebaseio.com/beep-test/users/');
         this.firebaseRef.on('value', function (dataSnapshot) {
-            console.log(dataSnapshot.val());
             this.users = [];
             dataSnapshot.forEach(function(childSnapshot) {
                 this.users.push(childSnapshot.val());
@@ -35,7 +34,6 @@ var Register = React.createClass({
 
 var RegisteredUsers = React.createClass({
     render: function () {
-        console.log(this.props.users);
         var registeredUsers = this.props.users.map(function(user) {
             console.log(user['name']);
             return (
