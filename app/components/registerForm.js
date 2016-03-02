@@ -1,55 +1,6 @@
-/**
- * Created by Carlo on 01/03/16.
- */
-
-var Register = React.createClass({
-    getRegisteredUsers: function() {
-        this.firebaseRef = new Firebase('https://boiling-fire-6401.firebaseio.com/beep-test/users/');
-        this.firebaseRef.on('value', function (dataSnapshot) {
-            this.users = [];
-            dataSnapshot.forEach(function(childSnapshot) {
-                this.users.push(childSnapshot.val());
-            }.bind(this));
-
-            this.setState({
-                data: this.users
-            });
-        }.bind(this));
-    },
-    componentDidMount: function() {
-        this.getRegisteredUsers();
-    },
-    getInitialState: function() {
-        return {data: []};
-    },
-    render: function() {
-        return (
-            <div>
-                <RegisterForm />
-                <RegisteredUsers users={this.state.data} />
-            </div>
-        )
-    }
-});
-
-var RegisteredUsers = React.createClass({
-    render: function () {
-        var registeredUsers = this.props.users.map(function(user) {
-            console.log(user['name']);
-            return (
-                <li>{user.name} - {user.goal}</li>
-            )
-        })
-        return (
-            <ul id="registered-users">
-                {registeredUsers}
-            </ul>
-        )
-    }
-});
+var React = require('react');
 
 var RegisterForm = React.createClass({
-    mixins: [ReactFireMixin],
     getInitialState: function() {
         return {
             users: [],
@@ -108,7 +59,4 @@ var RegisterForm = React.createClass({
     }
 });
 
-ReactDOM.render(
-    <Register url="/api/signup"/>,
-    document.getElementById('content')
-);
+module.export = RegisterForm;
