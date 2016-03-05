@@ -2,35 +2,29 @@
  * Created by Carlo on 02/03/16.
  */
 
-var React = require('react');
-var Register = React.createClass({
-    getRegisteredUsers: function() {
-        this.firebaseRef = new Firebase('https://boiling-fire-6401.firebaseio.com/beep-test/users/');
-        this.firebaseRef.on('value', function (dataSnapshot) {
-            this.users = [];
-            dataSnapshot.forEach(function(childSnapshot) {
-                this.users.push(childSnapshot.val());
-            }.bind(this));
+import React, {Component} from 'react';
+import Firebase from 'firebase';
+import RegisterForm from './registerForm';
+import RegisteredUsers from './registeredUsers';
 
-            this.setState({
-                data: this.users
-            });
-        }.bind(this));
-    },
-    componentDidMount: function() {
-        this.getRegisteredUsers();
-    },
-    getInitialState: function() {
-        return {data: []};
-    },
-    render: function() {
+class Register extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {data: []};
+    }
+    render() {
         return (
             <div>
                 <RegisterForm />
-                <RegisteredUsers users={this.state.data} />
+                <RegisteredUsers />
             </div>
         )
     }
-});
+}
 
-module.export = Register;
+export default Register;
+
+//var Register2 = React.createClass({
+//});
+//
+//module.export = Register;

@@ -1,10 +1,28 @@
-var React = require('react');
-var RegisteredUsers = React.createClass({
-    render: function () {
-        var registeredUsers = this.props.users.map(function(user) {
-            console.log(user['name']);
+import React, { Component } from 'react';
+
+class RegisteredUsers extends Component{
+    componentDidMount() {
+        this.getRegisteredUsers();
+    }
+    getRegisteredUsers() {
+        this.firebaseRef = new Firebase('https://boiling-fire-6401.firebaseio.com/beep-test/users/');
+        this.firebaseRef.on('value', dataSnapshot => {
+            this.users = [];
+            dataSnapshot.forEach(childSnapshot => {
+                var user = childSnapshot.val();
+                user.key = childSnapshot.key();
+                this.users.push(user);
+            });
+
+            this.setState({
+                users: this.users
+            });
+        })
+    }
+    render() {
+        var registeredUsers = this.state.users.map(function(user) {
             return (
-                <li>{user.name} - {user.goal}</li>
+                <li key={user.key}>{user.name} - {user.goal}</li>
             )
         })
         return (
@@ -13,6 +31,6 @@ var RegisteredUsers = React.createClass({
             </ul>
         )
     }
-});
+}
 
-module.export = RegisteredUsers;
+export default RegisteredUsers;

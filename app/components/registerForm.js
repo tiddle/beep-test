@@ -1,32 +1,37 @@
-var React = require('react');
+import React, { Component } from 'react';
+import Firebase from 'firebase';
 
-var RegisterForm = React.createClass({
-    getInitialState: function() {
-        return {
-            users: [],
-        }
-    },
-    componentWillMount: function() {
+class RegisterForm extends Component{
+    constructor() {
+        super();
+        this.state = {
+            name: '',
+            email: '',
+            goal: ''
+        };
+    }
+    componentWillMount() {
         this.firebaseRef = new Firebase('https://boiling-fire-6401.firebaseio.com/beep-test/users');
-    },
-    handleNameChange: function(e) {
+    }
+    handleNameChange(e) {
         this.setState({name: e.target.value});
-    },
-    handleEmailChange: function(e) {
+    }
+    handleEmailChange(e) {
         this.setState({email: e.target.value});
-    },
-    handleGoalChange: function(e) {
+    }
+    handleGoalChange(e) {
         this.setState({goal: e.target.value});
-    },
-    handleSubmit: function(e) {
+    }
+    handleSubmit(e) {
         e.preventDefault();
         this.firebaseRef.push({
             name: this.state.name,
             email: this.state.email,
             goal: this.state.goal
         });
-    },
-    render: function () {
+    }
+
+    render() {
         return (
             <form className="registration-form" onSubmit={this.handleSubmit}>
                 <ul>
@@ -57,6 +62,6 @@ var RegisterForm = React.createClass({
             </form>
         );
     }
-});
+}
 
-module.export = RegisterForm;
+export default RegisterForm;
