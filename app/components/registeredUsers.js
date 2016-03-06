@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 
 class RegisteredUsers extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            users: []
+        };
+    }
     componentDidMount() {
         this.getRegisteredUsers();
     }

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Firebase from 'firebase';
+import TextField from 'material-ui/lib/TextField';
 
 class RegisterForm extends Component{
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             name: '',
             email: '',
@@ -13,9 +14,11 @@ class RegisterForm extends Component{
     componentWillMount() {
         this.firebaseRef = new Firebase('https://boiling-fire-6401.firebaseio.com/beep-test/users');
     }
+
     handleNameChange(e) {
         this.setState({name: e.target.value});
     }
+
     handleEmailChange(e) {
         this.setState({email: e.target.value});
     }
@@ -29,31 +32,32 @@ class RegisterForm extends Component{
             email: this.state.email,
             goal: this.state.goal
         });
+
     }
 
     render() {
         return (
-            <form className="registration-form" onSubmit={this.handleSubmit}>
+            <form className="registration-form" onSubmit={this.handleSubmit.bind(this)}>
                 <ul>
-                    <li><input
-                        type="text"
-                        placeholder="Your name"
+                    <li><TextField
+                        hintText="Your name"
+                        floatingLabelText="Name"
                         value={this.state.name}
-                        onChange={this.handleNameChange}
+                        onChange={this.handleNameChange.bind(this)}
                     /></li>
                     <li>
-                        <input
-                            type="text"
-                            placeholder="Your email"
+                        <TextField
+                            hintText="Your email"
+                            floatingLabelText="Email"
                             value={this.state.email}
-                            onChange={this.handleEmailChange}
+                            onChange={this.handleEmailChange.bind(this)}
                         /></li>
                     <li>
-                        <input
-                            type="text"
-                            placeholder="Your goal, eg 6.3"
+                        <TextField
+                            hintText="Your goal, eg 6.3"
+                            floatingLabelText="Goal"
                             value={this.state.goal}
-                            onChange={this.handleGoalChange}
+                            onChange={this.handleGoalChange.bind(this)}
                         /></li>
                     <li>
                         <input type="submit" value="Register"/>

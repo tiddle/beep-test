@@ -23,8 +23,3 @@ class Register extends Component {
 }
 
 export default Register;
-
-//var Register2 = React.createClass({
-//});
-//
-//module.export = Register;

@@ -8,6 +8,7 @@
     "body-parser": "^1.4.3",
     "express": "^4.4.5",
     "firebase": "^2.4.1",
+    "material-ui": "^0.15.0-alpha.1",
     "react": "^0.14.7",
     "react-dom": "^0.14.7"
   },
@@ -26,17 +27,6 @@
     "type": "git",
     "url": "https://github.com/reactjs/react-tutorial.git"
   },
-  "keywords": [
-    "react",
-    "tutorial",
-    "comment",
-    "example"
-  ],
-  "author": "petehunt",
-  "bugs": {
-    "url": "https://github.com/reactjs/react-tutorial/issues"
-  },
-  "homepage": "https://github.com/reactjs/react-tutorial",
   "engines": {
     "node": "0.12.x"
   }
