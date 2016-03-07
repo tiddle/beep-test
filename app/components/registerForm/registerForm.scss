@@ -1,0 +1,14 @@
+.registration-form {
+  ul {
+    list-style: none;
+    padding: 0;
+    max-width: 400px;
+    margin: 0 auto;
+
+    li {
+      .button {
+        text-align: right;
+      }
+    }
+  }
+}

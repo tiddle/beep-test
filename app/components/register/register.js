@@ -4,8 +4,8 @@
 
 import React, {Component} from 'react';
 import Firebase from 'firebase';
-import RegisterForm from './registerForm';
-import RegisteredUsers from './registeredUsers';
+import RegisterForm from './../registerForm/registerForm';
+import RegisteredUsers from './../registeredUsers/registeredUsers';
 
 class Register extends Component {
     constructor(props) {

@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import {render} from 'react-dom';
-import Register from './components/register';
+import Register from './components/register/register';
 
 render(
     <Register url="/api/signup"/>,

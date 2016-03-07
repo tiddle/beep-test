@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Firebase from 'firebase';
 import TextField from 'material-ui/lib/TextField';
+import RaisedButton from 'material-ui/lib/raised-button';
+import './registerForm.scss';
 
 class RegisterForm extends Component{
     constructor(props) {
@@ -32,7 +34,10 @@ class RegisterForm extends Component{
             email: this.state.email,
             goal: this.state.goal
         });
-
+    }
+    validateGoal(e) {
+        console.log('in here');
+        retur
     }
 
     render() {
@@ -44,6 +49,8 @@ class RegisterForm extends Component{
                         floatingLabelText="Name"
                         value={this.state.name}
                         onChange={this.handleNameChange.bind(this)}
+                        errorText="This field is required"
+                        fullWidth={true}
                     /></li>
                     <li>
                         <TextField
@@ -51,6 +58,8 @@ class RegisterForm extends Component{
                             floatingLabelText="Email"
                             value={this.state.email}
                             onChange={this.handleEmailChange.bind(this)}
+                            errorText="This field is required"
+                            fullWidth={true}
                         /></li>
                     <li>
                         <TextField
@@ -58,14 +67,18 @@ class RegisterForm extends Component{
                             floatingLabelText="Goal"
                             value={this.state.goal}
                             onChange={this.handleGoalChange.bind(this)}
+                            validate={this.validateGoal.bind(this)}
+                            errorText="This field is required"
+                            fullWidth={true}
                         /></li>
-                    <li>
-                        <input type="submit" value="Register"/>
+                    <li className="button">
+                        <RaisedButton label="Register" primary={true} type="submit"/>
                     </li>
                 </ul>
             </form>
         );
     }
 }
+
 
 export default RegisterForm;
